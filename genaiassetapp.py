@@ -20,7 +20,23 @@ def save_data_to_excel(data, excel_file):
 
 # Streamlit application
 def main():
+        
+    # Create a sidebar
+    with st.sidebar:
+        st.sidebar.title("Instructions")
+        # Add text to the main page
+        st.write('This application will help to Maintain the GenAI assets.')
+        st.write('Please select the right option Insert, Update, Delete , Search from the dropdown menu.')
+        st.write('Please select the index number correctly Update, Delete .')                   
     st.title('GenAI Asset Management App')
+    # Set the background color to black
+    st.markdown("""
+    <style>
+    body {
+        background-color: #000;
+        color: #fff;
+    }
+    </style>""", unsafe_allow_html=True)
 
     excel_file = 'genai_datastore.xlsx'
 
