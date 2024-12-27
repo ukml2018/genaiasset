@@ -1,6 +1,7 @@
 # Install necessary libraries if not already installed
 # !pip install pandas streamlit
 #https://www.youtube.com/watch?v=4SO3CUWPYf0
+#https://genai-asset-tracker.onrender.com/
 
 import pandas as pd
 import streamlit as st
@@ -66,16 +67,9 @@ def main():
         st.subheader('Search Data')
         search_term = st.text_input('Enter search term:')
         if st.button('Search'):
-            #search_results = df[df.apply(lambda row: search_term.lower() in str(row).str.lower().any(), axis=1)]
-            #search_results = df[df.apply(lambda row: search_term.lower() in row.str.lower().any(), axis=1)]
             print("Search Term:",search_term)
-            #search_results = df[df.apply(lambda row: search_term.lower() in row.str.lower(), axis=1)]
             df = pd.read_excel(excel_file)
-            #print(df)
-            #search_results = df[df.apply(lambda row: search_term in row, axis=1)]
-            #search_results = df[df.apply(lambda row: search_term.lower() in row.str.lower(), axis=1)]
             search_results = df[df.apply(lambda row: any(search_term.lower() in str(cell).lower() for cell in row), axis=1)]
-            print("Search result:", search_results)
             st.write(search_results)
 
 if __name__ == '__main__':
